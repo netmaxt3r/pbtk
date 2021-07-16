@@ -8,7 +8,9 @@ from zipfile import ZipFile
 from os.path import exists
 
 from extractors.from_binary import walk_binary
-from utils.common import dex2jar, jad
+from utils.common import dex2jar, jad, jadx
+
+useJadx = True
 
 """
     This is a catch-all class that will handle either a JAR, DEX or APK file.
@@ -96,6 +98,8 @@ class ClassWrapper:
         if no_parse:
             jad_args.remove('-af')
             jad_args.insert(1, '-nofd')
+        if useJadx:
+            jad_args = [jadx, '-ds', jar.name, inpath]
         try:
             run(jad_args, timeout=5, cwd=jar.name, stdout=DEVNULL, stderr=DEVNULL)
         except TimeoutExpired:

@@ -35,6 +35,7 @@ arch = '64' * (architecture()[0] == '64bit')
 protoc = str(external / 'protoc' / ('protoc' + {'win32': '.exe', 'darwin': '_osx'}.get(platform, arch)))
 dex2jar = str(external / 'dex2jar' / ('d2j-dex2jar.' + {'win32': 'bat'}.get(platform, 'sh')))
 jad = str(external / 'jad' / ('jad' + {'win32': '.exe', 'darwin': '_osx'}.get(platform, '')))
+jadx = str(external / 'jadx' / 'bin' / ('jadx' + {'win32': '.bat'}.get(platform, '')))
 
 # Disable the C++ extension for Python-Protobuf (for consistent behaviour) [1]
 # [1] https://github.com/google/protobuf/blob/cf1418/python/google/protobuf/internal/api_implementation.py#L72
